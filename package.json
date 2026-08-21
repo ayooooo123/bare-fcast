@@ -1,0 +1,49 @@
+{
+  "name": "bare-fcast",
+  "version": "0.1.0",
+  "description": "FCast, Chromecast and mDNS discovery for the Bare and Pear runtimes, implemented from the wire specs",
+  "author": "Josh Lowy <josh@lowy.me>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayooooo123/bare-fcast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayooooo123/bare-fcast/issues"
+  },
+  "homepage": "https://github.com/ayooooo123/bare-fcast#readme",
+  "keywords": [
+    "bare",
+    "pear",
+    "holepunch",
+    "fcast",
+    "chromecast",
+    "cast",
+    "castv2",
+    "mdns",
+    "dns-sd",
+    "protobuf",
+    "screencast"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "type": "module",
+  "scripts": {
+    "test": "bare test.js"
+  },
+  "dependencies": {
+    "bare-buffer": "^3.0.0",
+    "bare-dgram": "^1.0.0",
+    "bare-events": "^2.0.0",
+    "bare-tcp": "^1.0.0",
+    "bare-tls": "^2.1.5"
+  },
+  "engines": {
+    "bare": ">=2.0.0"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "lib"
+  ]
+}
