@@ -88,6 +88,10 @@ connection.
 
 ### Chromecast
 
+![Chromecast CASTV2 connect and load](docs/chromecast-sequence.png)
+
+<sub>Source: [`docs/chromecast-sequence.html`](docs/chromecast-sequence.html) — self-contained, opens offline.</sub>
+
 TLS port 8009, `CastMessage` protobuf across four namespaces: connection, heartbeat, receiver and
 media. The wire format is a 32-bit big-endian body length followed by the protobuf body.
 
