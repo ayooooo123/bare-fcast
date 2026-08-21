@@ -10,8 +10,10 @@ Bare has no Node ecosystem to borrow a cast library from:
 - **Chromecast CASTV2** over TLS — protobuf `CastMessage` framing, with the protobuf encoder written here
 - **mDNS / DNS-SD** over UDP multicast — DNS name encoding and response parsing, including compression pointers
 
+Not on npm. Install from the repository:
+
 ```
-npm install bare-fcast
+npm install github:ayooooo123/bare-fcast
 ```
 
 Requires Bare >= 2.0.0.
