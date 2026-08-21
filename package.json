@@ -36,7 +36,7 @@
     "bare-dgram": "^1.0.0",
     "bare-events": "^2.0.0",
     "bare-tcp": "^1.0.0",
-    "bare-tls": "^2.1.5"
+    "bare-tls": "^3.1.8"
   },
   "engines": {
     "bare": ">=2.0.0"

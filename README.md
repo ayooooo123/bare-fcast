@@ -106,9 +106,12 @@ bodies under 128 bytes and visibly wrong above, which is a bug this library ship
 `decodeCastMessage` returns `null` when the buffer does not yet hold a complete frame, and throws when
 the declared length exceeds `MAX_BUFFER_SIZE`.
 
-Certificate verification is off by default for Chromecast, because receivers present self-signed
-certificates. Discovery is unauthenticated on a local network either way — treat a cast target as
-untrusted and do not send it a URL you would not put in a log.
+Chromecast connections pass `rejectUnauthorized: false` explicitly, because receivers present a
+self-signed certificate and `bare-tls` 3.x verifies against a CA bundle by default. This is a
+deliberate opt-out, not an oversight: with it, the handshake completes; without it you get
+`CERTIFICATE_VERIFY_FAILED`. It also means the cast target is authenticated by nothing. Discovery is
+unauthenticated mDNS on the local network either way — treat a receiver as untrusted and do not send
+it a URL you would not put in a log.
 
 ## Tests
 
@@ -122,9 +125,10 @@ reads, non-JSON bodies, compression pointers, and oversized declared lengths.
 
 ## Notes
 
-- `bare-tls` 2.1.5 wraps OpenSSL's internal BIO buffer and hands the pointer to JavaScript, which is a
-  use-after-free once hardened malloc is enabled. If you hit that, the fix is to allocate a JS-owned
-  buffer and copy, so the engine owns the lifetime.
+- Requires `bare-tls` >= 3.1.8. 2.x did not implement peer verification at all (its `binding.init`
+  took no `rejectUnauthorized` argument and the native layer never called `SSL_set_verify`), so on 2.x
+  nothing was ever checked. 3.x added verification and defaults it on, which is why the opt-out above
+  is now written down instead of implied.
 - Extracted from [PearTube](https://github.com/ayooooo123/peartube), where it drives casting from a
   peer-to-peer video app.
 
